@@ -5,7 +5,6 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
-
 $fileData = function() {
     $file = fopen(__DIR__ . '/file.txt', 'r');
 
@@ -15,10 +14,8 @@ $fileData = function() {
     while (($line = fgets($file)) !== false) {
         yield $line;
     }
-
     fclose($file);
 };
-$sumCount=0;
 
 function check_prime($num)
 {
@@ -32,61 +29,43 @@ function check_prime($num)
    return true;
 }
 
-
-
 function steps($arr,$x,$y)
 {
-
 //a=x+1,y
 //b=x+1,y+1
 if(check_prime($arr[$x+1][$y])==true && check_prime($arr[$x+1][$y+1])==true)
 {
     return array("x"=>-1,"y"=>-1);
-
 }
 if($arr[$x+1][$y]>$arr[$x+1][$y+1] && check_prime($arr[$x+1][$y])==false)
 {
-
-
-return array("x"=>$x+1,"y"=>$y);
+    return array("x"=>$x+1,"y"=>$y);
 }
 if($arr[$x+1][$y]>$arr[$x+1][$y+1] && check_prime($arr[$x+1][$y])==true)
 {
-if(check_prime($arr[$x+1][$y+1])==false)
-{
-
-return array("x"=>$x+1,"y"=>$y+1);
-
-}
+    if(check_prime($arr[$x+1][$y+1])==false)
+    {
+        return array("x"=>$x+1,"y"=>$y+1);
+    }
 }
 if($arr[$x+1][$y+1]>$arr[$x+1][$y] && check_prime($arr[$x+1][$y+1])==false)
 {
-
-
-return array("x"=>$x+1,"y"=>$y+1);
-
-
+    return array("x"=>$x+1,"y"=>$y+1);
 }
 if($arr[$x+1][$y+1]>$arr[$x+1][$y] && check_prime($arr[$x+1][$y+1])==true)
 {
     if(check_prime($arr[$x+1][$y])==false)
     {
-  return array("x"=>$x+1,"y"=>$y);
+        return array("x"=>$x+1,"y"=>$y);
     }
 }
-
-
-
-
 }
 
-
+$sumCount=0;
 $cursor=array("x"=>0,"y"=>0);
 $holderCurs;
 $input=array(
 
-
-    
 // array(215),
 // array(193 ,124),
 // array(117, 237 ,442),
@@ -114,9 +93,7 @@ foreach ($fileData() as $line) {
 // echo $input[$cursor["x"]][$cursor["y"]];
 // $holderCurs=firstSteps($input,$cursor["x"],$cursor["y"]);
 // $cursor=$holderCurs;
-
 // }
-
 // $holderCurs=steps($input,$cursor["x"],$cursor["y"]);
 // $cursor=$holderCurs;
 // echo $input[$cursor["x"]][$cursor["y"]];
@@ -126,14 +103,6 @@ foreach ($fileData() as $line) {
 // $holderCurs=steps($input,$cursor["x"],$cursor["y"]);
 // $cursor=$holderCurs;
 // echo $input[$cursor["x"]][$cursor["y"]];
-
-
-
-
-
-
-
-
 
 $i=1;
 $case=1;
